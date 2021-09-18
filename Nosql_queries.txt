@@ -1,0 +1,85 @@
+-----mongodb----
+
+db.createUser(
+   {
+     user: "shree",
+     pwd: "5939",
+     roles: [ "readWrite", "dbAdmin" ]
+   }
+);
+
+db.createCollection("customer");
+{"ok":1}
+
+show collections;
+
+db.customer.insert({first_name:"shree",last_name:"nidhi"});
+
+db.createCollection("");
+{"ok":1}
+
+db.customer.find();
+
+db.customer.find().pretty();
+
+db.customer.insert([{Name:"Shreenidhi BN",Age:22},
+{Name:"Sanjana S Rao",Age:22}]);
+
+db.customer.update({first_name:"shree"},{first_name:"shree",last_name:"nidhi",gender:"Male"});
+
+db.customer.update({last_name:"nidhi"},{nickname:"s"});
+
+db.customer.update({last_name:"nidhi"},{$set:{gender:"M"}});
+
+db.customer.update({Name:"Shreenidhi BN"},{$unset:{Age:1}});
+
+db.customer.update({Name:"Shreenidhi BN"},{$set:{Age:21}});
+
+db.customer.update({Name:"Shreenidhi BN"},{$inc:{Age:1}});
+
+To rename field:
+db.customer.update({Name:"shree"},{$rename:{Name:"first_name"}});
+
+To add status field or attribute to all the rows or entries.
+db.customer.updateMany({},{$set:{status:"living"}});
+
+To remove status field or attribute from all the rows or entries.
+db.customer.updateMany({},{$set:{status:"living"}});
+
+db.customer.update({gender:"Male"},{$set:{nickname:"shree"}},{multi:true});
+
+To drop collection:
+db.collection_name.drop();
+
+db.customer.find({Age:{$gt:20}},{_id:0,Age:1,Name:1}).sort({Name:1}).pretty();
+
+To show first name of all entries: 1-means show that field only.
+db.customer.find({},{first_name:1});
+
+To show all without id and first name of all entries: 0- means dont show this field.
+db.customer.find({},{_id:0,first_name:0});
+
+db.customer.find({Age:{$gt:26}}).pretty();
+
+db.customer.find({Age:{$lt:26}}).pretty();
+
+db.customer.find({Age:{$ne:22}}).pretty();
+
+db.customer.find({Age:{$eq:22}}).pretty();
+
+To remove the complte row of this given field;
+db.customer.remove({first_name:{$eq:"shree"}});
+
+db.customer.find().limit(1).pretty();
+
+db.customer.find().limit(2).pretty();
+
+db.customer.find().skip(2).pretty();
+
+Both below syntax are same:
+db.customer.find().limit(1).skip(2).pretty();
+db.customer.find().skip(2).limit(1).pretty();
+
+To count how many records are there:
+db.customer.find().count();
+
