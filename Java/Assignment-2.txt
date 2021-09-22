@@ -1,0 +1,215 @@
+
+13> Repeated elements:
+
+package com.torryharris;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of elements you want to insert to the array: ");
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        int[] rep=new int[n];
+
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        Arrays.sort(arr);
+        int k=0;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    rep[k]=arr[j];
+                    i=j;
+                    k++;
+                    break;
+                }
+            }
+
+        }
+        int cnt=0;
+        System.out.println("Repeated elements are: ");
+        for(int i:rep) {
+            if(i!=0) {
+                System.out.print(i+" ");
+                cnt++;
+            }
+        }
+        System.out.println("\nTotal repeated elements: "+cnt);
+
+
+
+    }
+}
+
+********OUTPUT*********
+Enter number of elements you want to insert to the array: 
+7
+50
+20
+10
+40
+20
+50
+20
+Repeated elements are: 
+20 50 
+Total repeated elements: 2
+
+
+14> Removing of duplicate elements:
+
+package com.torryharris;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of elements you want to insert to the array: ");
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        int[] dup=new int[n];
+
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+
+        dup[0]=arr[0];
+        int k=1,flag=0;
+        for(int i=0;i<n-1;i++){
+                if(arr[i]!=arr[i+1]){
+                    for(int j=0;j<n;j++){
+                        if(arr[i+1]==dup[j])
+                            flag=1;
+                    }
+                    if(flag==0) {
+                        dup[k] = arr[i+1];
+                        k++;
+                    }
+                }
+                flag=0;
+        }
+        System.out.println("After removing duplicate elements we get: ");
+        for(int i:dup)
+            if(i!=0)
+                System.out.print(i+" ");
+
+    }
+}
+
+********OUTPUT*********
+For sorted elements:
+Enter number of elements you want to insert to the array: 
+7
+10 10 20 30 40 40 50
+After removing duplicate elements we get: 
+10 20 30 40 50 
+
+For unsorted elements:
+Enter number of elements you want to insert to the array: 
+8
+30 50 20 50 10 20 30 10 
+After removing duplicate elements we get: 
+30 50 20 10 
+
+
+15> Insert element at a specific position:
+
+package com.torryharris;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        System.out.println("Enter number of elements you want to insert to the array: ");
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        int[] newarr=new int[n+1];
+
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+
+        System.out.println("Enter the element to be inserted: ");
+        int ele= sc.nextInt();
+        System.out.println("Enter the position: ");
+        int pos= sc.nextInt();
+
+        int k=0;
+        for(int i=0;i<=n;i++){
+            if(i==pos)
+                newarr[i]=ele;
+            else {
+                newarr[i] = arr[k];
+                k++;
+            }
+        }
+        System.out.println("After inserted new element to the array we get: ");
+        for(int i:newarr)
+            System.out.print(i+" ");
+        
+    }
+}
+
+********OUTPUT*********
+Enter number of elements you want to insert to the array: 
+5
+10 20 30 40 60
+Enter the element to be inserted: 
+50
+Enter the position: 
+4
+After inserted new element to the array we get: 
+10 20 30 40 50 60 
+
+
+16> Check given number is armstrong are not:
+
+package com.torryharris;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a number between 1 to 1000: ");
+        int n=sc.nextInt();
+        while(n<=1 || n>=1000){
+            System.out.println("Please enter the number only between 1 to 1000 range: ");
+            n=sc.nextInt();
+        }
+        int len=String.valueOf(n).length();
+        int armstr=0;
+        int n1=n;
+        while(n1!=0){
+            armstr+=(int)Math.pow((n1%10),len);
+            n1/=10;
+        }
+        if(armstr==n)
+            System.out.println("Given number is Armstrong");
+        else
+            System.out.println("Given number is not an Armstrong");
+
+    }
+}
+
+********OUTPUT*********
+Enter a number between 1 to 1000: 
+1
+Please enter the number only between 1 to 1000 range: 
+153
+Given number is Armstrong
+
+Enter a number between 1 to 1000: 
+190
+Given number is not an Armstrong
+

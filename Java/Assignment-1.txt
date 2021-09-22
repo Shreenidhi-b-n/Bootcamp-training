@@ -1,0 +1,57 @@
+package com.torryharris;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        Scanner sc=new Scanner(System.in);
+
+        int x = 3, y= 5, z=10;
+        int res1 = z+ ++y -y +z + ++x;
+        //int res2 = ++z+ y -y +z + x++;
+        //int res3 = z + ++y - y++ + ++z + ++x;
+        System.out.println(res1);
+        
+        int[] arr={101,102,103,104};
+        System.out.println("Array elements are: ");
+        for(int i:arr)
+            System.out.print(i+" ");
+        int n=sc.nextInt();
+        int[] arr1=new int[n];
+        for(int i=0;i<n;i++)
+            arr1[i]=sc.nextInt();
+        int sum=0;
+        for(int j:arr1){
+            sum+=j;
+        }
+        System.out.println("Sum of array elements are: "+sum);
+
+        int yr=sc.nextInt();
+        if(yr%4==0)
+            System.out.println("This is a leap year");
+        else
+            System.out.println("This is not a leap year");
+
+        int n=sc.nextInt();
+        int len=String.valueOf(n).length();
+        int res=0;
+        int n1=n;
+        while(n1!=0){
+            res+=(int)Math.pow((n1%10),len);
+            n1/=10;
+        }
+        if(res==n)
+            System.out.println("Given number is Armstrong");
+        else
+            System.out.println("Given number is not an Armstrong");
+
+        System.out.println("Enter a number you like to display table :");
+        int n=sc.nextInt();
+        for(int i=1;i<11;i++)
+            System.out.println(n+" * "+i+" = "+(n*i));
+
+
+    }
+}

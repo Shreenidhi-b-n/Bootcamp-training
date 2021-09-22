@@ -1,0 +1,50 @@
+package com.torryharris;
+
+class Circle {
+    private double radius;
+    private String colour;
+
+    public Circle(){
+        this(3.5,"Blue");
+    }
+
+    public Circle(double radius){
+        this(radius,"Brown");
+    }
+
+    public Circle(String colour){
+        this(6.5,colour);
+    }
+
+    public Circle(double radius,String colour){
+        this.radius=radius;
+        this.colour=colour;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                ", colour='" + colour + '\'' +
+                '}';
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        Circle c1=new Circle();
+        System.out.println(c1);
+
+        Circle c2=new Circle(5.6,"Pink");
+        System.out.println(c2);
+
+        Circle c3=new Circle(7.6);
+        System.out.println(c3);
+
+        Circle c4=new Circle("Yellow");
+        System.out.println(c4);
+
+    }
+}
